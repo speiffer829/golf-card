@@ -46,12 +46,15 @@
 	--font: 'Tienne', serif;
 
 	--font-title:'Ultra', serif;
+
+	--shroom-text-shadow: 2px 2px 0 var(--brown), 4px 4px 0 var(--red), 6px 6px var(--green);
 }
 
 *{
 	margin: 0;
 	-webkit-appearance: none;
 	box-sizing: border-box;
+	font-family: var(--font);
 }
 
 body{
@@ -59,7 +62,7 @@ body{
 	width: 100%;
 	min-height: 100vh;
 	font-family: var(--font);
-	color: var(--light);
+	color: var(--brown);
 	font-weight: 400;
 }
 
