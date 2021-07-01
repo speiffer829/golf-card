@@ -1,9 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Tienne:wght@400;900&family=Ultra&display=swap');
+
 :root{
-	--dark: #022B3A;
-	--ice: #D6EFFF;
-	--light: #FEFEFF;
-	--teal: #1F7A8C;
-	--red: #FE654F;
-	--purple: #657ED4;
-	--green: #32DE8A;
+	--dark: hsl(195.9, 93.2%, 11.8%);
+	--dark-h: 195.9;
+	--dark-s: 93.2%;
+	--dark-l: 11.8%;
+
+	--paper: hsl(230, 67.3%, 95.1%);
+	--paper-h: 230;
+	--paper-s: 67.3%;
+	--paper-l: 95.1%;
+
+	--ice: hsl(203.5, 100%, 92%);
+	--ice-h: 203.5;
+	--ice-s: 100%;
+	--ice-l: 92%;
+
+	--light: hsl(240, 100%, 99.8%);
+	--light-h: 240;
+	--light-s: 100%;
+	--light-l: 99.8%;
+
+	--sea: hsl(182.5, 85.2%, 21%);
+	--sea-h: 182.5;
+	--sea-s: 85.2%;
+	--sea-l: 21%;
+	--sea-light: hsl(var(--sea-h), var(--sea-s), calc(var(--sea-l) + 5%));
+
+	--teal: hsl(176.5, 47.4%, 51.6%);
+	--red: hsl(0, 100%, 67.5%);
+	--brown: hsl(18.8, 49.6%, 53.4%);
+
+	--gold: hsl(43.9, 94%, 66.6%);
+	--gold-light: hsl(43.9, 94%, 71.6%);
+
+	--pale-yellow: hsl(55.9, 100%, 88.3%);
+
+	--green: hsl(154.2, 20.3%, 50.8%);
+
+
+
+
+
+	--font: 'Tienne', serif;
+
+	--font-title:'Ultra', serif;
 }
+
+*{
+	margin: 0;
+	-webkit-appearance: none;
+	box-sizing: border-box;
+}
+
+body{
+	background: var(--pale-yellow);
+	width: 100%;
+	min-height: 100vh;
+	font-family: var(--font);
+	color: var(--light);
+	font-weight: 400;
+}
+
