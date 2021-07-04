@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Tienne:wght@400;900&family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Ultra&display=swap');
 
 :root{
 	--dark: hsl(195.9, 93.2%, 11.8%);
@@ -43,7 +43,7 @@
 
 
 
-	--font: 'Tienne', serif;
+	--font: 'Arvo', serif;
 
 	--font-title:'Ultra', serif;
 
@@ -55,6 +55,7 @@
 	-webkit-appearance: none;
 	box-sizing: border-box;
 	font-family: var(--font);
+	transition: all 300ms;
 }
 
 body{
