@@ -1,25 +1,28 @@
 <script>
 	import { flip } from 'svelte/animate';
 	import {fly} from 'svelte/transition'
+	import {scoreboard, headText} from '$lib/stores/store'
 	
-	let arrOfNames = []
+	let names = []
 	let currentName = ''
 	let count = 0
 
 
 	function handleSubmit(){
 		const name = currentName
-		arrOfNames= [...arrOfNames, { id: count, name: name }]
+		names= [...names, { id: count, name: name }]
 		count++
 		currentName = ''
 	}
 
 	function removeMe(i) {
-		arrOfNames = [...arrOfNames.slice(0, i), ...arrOfNames.slice(i + 1)]
+		names = [...names.slice(0, i), ...names.slice(i + 1)]
 	}
 
 	function initiateGame() {
-		
+		scoreboard.set(names)
+
+		window.location.href='/game'
 	}
 </script>
 
@@ -27,33 +30,36 @@
 	<title>Golf Scorerer</title>
 </svelte:head>
 
+<h1 class="head-text">Golf Scorerer</h1>
+
 <form on:submit|preventDefault={handleSubmit} >
 	<input type="text" bind:value={currentName} placeholder="Add Player">
 	<button class="add-btn" disabled={currentName.length == 0}>Add Player</button>
 </form>
 
 
-{ #each arrOfNames as name, i (name.id) }
+{ #each names as name, i (name.id) }
 	<h2
-		transition:fly={{ x:30, duration: 1000}} animate:flip>
+		transition:fly={{ y:100, duration: 1000}} animate:flip>
 		<span class="number">{i + 1}.</span> <span class="name">{name.name}</span>
 	</h2>
 {/each}
 
 
 
-{#if arrOfNames.length !== 0}
-<p transition:fly={{ y:30, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p>
+{#if names.length !== 0}
+<p transition:fly={{ y:100, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p>
 
 <button 
-	transition:fly={{ y:30, duration: 1000, delay: 100 }} 
-	disabled={arrOfNames.length === 0}
+	transition:fly={{ y:100, duration: 1000, delay: 100 }} 
+	disabled={names.length === 0}
 	on:click={initiateGame}>
 		Start
-	</button>
+</button>
 
 {/if}
 <style lang="scss">
+	
 	button{
 		font-size: 2rem;
 		text-align: center;
@@ -102,9 +108,10 @@
 		width: 100%;
 		text-transform: capitalize;
 		box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
-		text-shadow: 2px 2px var(--red);
+		text-shadow: 2px 2px var(--green);
 		font-family: var(--font-title);
 		color: var(--gold);
+		background: #eee;
 
 		&:focus{
 			border-color: var(--green);

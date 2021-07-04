@@ -1,8 +1,7 @@
 <script>
 	import '../app.scss'
+	import {headText} from '$lib/stores/store'
 </script>
-
-<h1>Golf Scorerer</h1>
 <main class="wrap">
 	<slot />
 </main>
