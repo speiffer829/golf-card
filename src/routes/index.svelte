@@ -1,7 +1,8 @@
 <script>
 	import { flip } from 'svelte/animate';
 	import {fly} from 'svelte/transition'
-	import {scoreboard, headText} from '$lib/stores/store'
+	import {scoreboard} from '$lib/stores/store'
+	import {goto} from '$app/navigation'
 	
 	let names = []
 	let currentName = ''
@@ -13,6 +14,7 @@
 		names= [...names, { id: count, name: name }]
 		count++
 		currentName = ''
+		console.log( names )
 	}
 
 	function removeMe(i) {
@@ -20,9 +22,10 @@
 	}
 
 	function initiateGame() {
-		scoreboard.set(names)
+		$scoreboard = [...$scoreboard, ...names]
 
-		window.location.href='/game'
+			goto('/game')
+
 	}
 </script>
 
@@ -40,7 +43,7 @@
 
 { #each names as name, i (name.id) }
 	<h2
-		transition:fly={{ y:100, duration: 1000}} animate:flip>
+		transition:fly|local={{ y:100, duration: 1000}} animate:flip>
 		<span class="number">{i + 1}.</span> <span class="name">{name.name}</span>
 	</h2>
 {/each}
@@ -48,10 +51,10 @@
 
 
 {#if names.length !== 0}
-<p transition:fly={{ y:100, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p>
+<p transition:fly|local={{ y:100, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p>
 
 <button 
-	transition:fly={{ y:100, duration: 1000, delay: 100 }} 
+	transition:fly|local={{ y:100, duration: 1000, delay: 100 }} 
 	disabled={names.length === 0}
 	on:click={initiateGame}>
 		Start
