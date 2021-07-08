@@ -22,6 +22,9 @@
 	}
 
 	function initiateGame() {
+		names.forEach(name => {
+			name.holes = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+		})
 		$scoreboard = [...$scoreboard, ...names]
 
 			goto('/game')

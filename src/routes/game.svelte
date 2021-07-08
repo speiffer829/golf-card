@@ -2,8 +2,11 @@
 	import {onMount} from 'svelte'
 	import {scoreboard, currentHole, currentHoleViewed} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
+	import PlayerCard from '$lib/components/PlayerCard.svelte'
 
 	onMount(() => {if(!$scoreboard.length) goto('/')})
+
+	console.log( scoreboard )
 </script>
 
 <svelte:head>
@@ -14,9 +17,9 @@
 <h1 class="head-text">Hole <sup>#</sup>{ $currentHoleViewed }</h1>
 
 
-{ #each $scoreboard as player }
+{ #each $scoreboard as player, i }
 
-	<p>{player.name}</p>
+	<PlayerCard {player} {i} />
 
 { /each }
 
