@@ -1,9 +1,8 @@
 <script>
 	import {onMount} from 'svelte'
-	import { showHoleSelect, scoreboard, currentHoleViewed, currentHole, nextHole} from '$lib/stores/store'
+	import { scoreboard, currentHoleViewed, currentHole, nextHole} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
-	import { fly } from 'svelte/transition'
 	import HoleTitle from '$lib/components/HoleTitle.svelte'
 
 	onMount(() => {if(!$scoreboard.length) goto('/')})

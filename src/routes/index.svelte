@@ -12,6 +12,7 @@
 	let names = []
 	let currentName = ''
 	let count = 0
+	let addPlayerInput;
 
 
 	function handleSubmit(){
@@ -19,7 +20,7 @@
 		names= [...names, { id: count, name: name }]
 		count++
 		currentName = ''
-		console.log( names )
+		addPlayerInput.focus()
 	}
 
 	function removeMe(i) {
@@ -44,7 +45,7 @@
 <h1 class="head-text">Golf Scorerer</h1>
 
 <form on:submit|preventDefault={handleSubmit} >
-	<input type="text" bind:value={currentName} placeholder="Add Player">
+	<input type="text" bind:value={currentName} bind:this={addPlayerInput} placeholder="Add Player">
 	<button class="add-btn" disabled={currentName.length == 0}>Add Player</button>
 </form>
 
@@ -59,7 +60,7 @@
 
 
 {#if names.length !== 0}
-<p transition:fly|local={{ y:100, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p>
+<!-- <p transition:fly|local={{ y:100, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p> -->
 
 <button 
 	transition:fly|local={{ y:100, duration: 1000, delay: 100 }} 
