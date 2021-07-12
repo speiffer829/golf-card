@@ -83,3 +83,22 @@ body{
 		font-size: clamp(2rem, 9vw, 3.5rem);
 		
 	}
+
+.btn{
+	font-size: 2rem;
+	text-align: center;
+	border: none;
+	background: var(--green);
+	color: var(--gold);
+	cursor: pointer;
+	font-weight: bold;
+	font-family: var(--font-title);
+	text-shadow: 3px 3px var(--red);
+	padding: 20px 40px;
+	margin: 20px auto;
+	display: block;
+	letter-spacing: .2em;
+	border-radius: 10px;
+	box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
+	transition: all 100ms;
+}

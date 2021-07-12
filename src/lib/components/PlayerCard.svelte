@@ -15,7 +15,7 @@
 	<h3>{ player.name }</h3>
 	<input 
 		type="number" 
-		bind:value={$scoreboard[i].holes[$currentHoleViewed]} 
+		bind:value={$scoreboard[i].holes[$currentHoleViewed - 1]} 
 		on:click={e => e.target.select()}
 		on:change={handleChange}>
 </article>
@@ -36,7 +36,7 @@
 	}
 
 	input{
-		background: var(--teal);
+		background: transparent;
 		border: solid 3px var(--red);
 		font-size: 2rem;
 		text-align: center;
