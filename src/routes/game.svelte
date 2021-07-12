@@ -3,8 +3,11 @@
 	import {scoreboard, currentHoleViewed, nextHole} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
+	import Modal from '$lib/components/Modal.svelte'
 
 	onMount(() => {if(!$scoreboard.length) goto('/')})
+
+	let test = false
 
 	console.log( scoreboard )
 </script>
