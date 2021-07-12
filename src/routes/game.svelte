@@ -31,11 +31,7 @@
 <button class="btn" on:click={() => currentHoleViewed.set($currentHole)}>Resume</button>
 {/if}
 
-{#if $showHoleSelect}
-<Modal on:closeMe={() => showHoleSelect.set(false) }>
-	<GoToHole on:closeMe={() => showHoleSelect.set(false) } />
-</Modal>
-{/if}
+
 
 
 <style lang="scss">

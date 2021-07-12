@@ -21,9 +21,23 @@
 	{/each}
 </div>
 
+<a href="/totals" on:click={() => dispatch('closeMe')}>See Current Totals</a>
+
 
 <style lang="scss">
 	h3{
+		text-align: center;
+	}
+
+	a{
+		display: block;
+		background: var(--brown);
+		color: var(--pale-yellow);
+		padding: 1rem 2rem;
+		border-radius: 10px;
+		box-shadow: var(--subtle-shadow);
+		margin: 1rem auto 0;
+		text-decoration: none;
 		text-align: center;
 	}
 

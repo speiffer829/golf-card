@@ -1,4 +1,9 @@
 <script>
+
+	//TODO: Use Local Storage
+	//TODO: Actually Give Added Up Results Modal and Page
+	//TODO: Favicon
+	
 	import { flip } from 'svelte/animate';
 	import {fly} from 'svelte/transition'
 	import {scoreboard} from '$lib/stores/store'
