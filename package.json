@@ -12,14 +12,14 @@
     "@sveltejs/adapter-netlify": "^1.0.0-next.20",
     "@sveltejs/adapter-static": "^1.0.0-next.13",
     "@sveltejs/kit": "next",
-    "prettier": "~2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.34.0"
+    "prettier": "~2.3.2",
+    "prettier-plugin-svelte": "^2.3.1",
+    "svelte": "^3.38.3"
   },
   "type": "module",
   "dependencies": {
     "node-sass": "^6.0.1",
-    "sass": "^1.35.1",
-    "svelte-preprocess": "^4.7.3"
+    "sass": "^1.35.2",
+    "svelte-preprocess": "^4.7.4"
   }
 }
