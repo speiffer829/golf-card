@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte'
-	import {scoreboard, currentHole, currentHoleViewed} from '$lib/stores/store'
+	import {scoreboard, currentHole, currentHoleViewed, nextHole} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
 
@@ -22,6 +22,8 @@
 	<PlayerCard {player} {i} />
 
 { /each }
+
+<button on:click={nextHole}>Save And Move On</button>
 
 
 <style lang="scss">
