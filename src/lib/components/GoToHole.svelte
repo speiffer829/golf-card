@@ -52,6 +52,7 @@
 		text-align: center;
 		font-size: 1.3rem;
 		aspect-ratio: 1/1;
+		width: 100%;
 		border-radius: 100%;
 		border: solid 2px var(--brown);
 		background: transparent;

@@ -14,7 +14,7 @@
 <article class="player-box">
 	<h3>{ player.name }</h3>
 	<input 
-		type="number" 
+		type="number" pattern="\d*"
 		bind:value={$scoreboard[i].holes[$currentHoleViewed - 1]} 
 		on:click={e => e.target.select()}
 		on:change={handleChange}>
@@ -26,6 +26,7 @@
 		display: grid;
 		grid-template-columns: 3fr 1fr;
 		width: 100%;
+		align-items: center;
 	}
 
 	h3{
@@ -36,8 +37,12 @@
 	}
 
 	input{
-		background: transparent;
-		border: solid 3px var(--red);
+		background: var(--green);
+		border: none;
+		border-radius: 100%;
+		box-shadow: 2px 2px var(--gold);
+		aspect-ratio: 1/1;
+		/* border: solid 3px var(--red); */
 		font-size: 2rem;
 		text-align: center;
 		font-family: var(--font-title);

@@ -19,3 +19,10 @@ export function nextHole() {
 	currentHole.set(newHole);
 	currentHoleViewed.set(newHole);
 }
+
+export function resetAll() {
+	currentHole.set(1);
+	currentHoleViewed.set(1);
+	scoreboard.set([])
+	
+}

@@ -25,10 +25,12 @@
 { /each }
 
 
-{#if $currentHole === $currentHoleViewed}
+{#if $currentHole === $currentHoleViewed && $currentHole < 18}
 <button class="btn" on:click={nextHole}>Next Hole</button>
-{:else}
+{:else if $currentHole <= 18 && $currentHole !== $currentHoleViewed}
 <button class="btn" on:click={() => currentHoleViewed.set($currentHole)}>Resume</button>
+{:else}
+<a href="/totals" on:click={nextHole} class="btn">Totals</a>
 {/if}
 
 
@@ -39,7 +41,7 @@ sup{
 	font-size: clamp(1rem, 5vw, 2rem);
 }
 
-button{
+button, a{
 	margin-top: 4rem;
 }
 </style>
