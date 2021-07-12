@@ -1,15 +1,13 @@
 <script>
 	import {onMount} from 'svelte'
-	import {scoreboard, currentHoleViewed, nextHole} from '$lib/stores/store'
+	import { showHoleSelect, scoreboard, currentHoleViewed, currentHole, nextHole} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
 	import Modal from '$lib/components/Modal.svelte'
+	import GoToHole from '$lib/components/GoToHole.svelte'
 
 	onMount(() => {if(!$scoreboard.length) goto('/')})
 
-	let test = false
-
-	console.log( scoreboard )
 </script>
 
 <svelte:head>
@@ -17,7 +15,7 @@
 </svelte:head>
 
 
-<h1 class="head-text">Hole <sup>#</sup>{ $currentHoleViewed }</h1>
+<h1 class="head-text" on:click={ () => showHoleSelect.set(true) }>Hole <sup>#</sup>{ $currentHoleViewed }</h1>
 
 
 { #each $scoreboard as player, i }
@@ -26,7 +24,18 @@
 
 { /each }
 
+
+{#if $currentHole === $currentHoleViewed}
 <button class="btn" on:click={nextHole}>Next Hole</button>
+{:else}
+<button class="btn" on:click={() => currentHoleViewed.set($currentHole)}>Resume</button>
+{/if}
+
+{#if $showHoleSelect}
+<Modal on:closeMe={() => showHoleSelect.set(false) }>
+	<GoToHole on:closeMe={() => showHoleSelect.set(false) } />
+</Modal>
+{/if}
 
 
 <style lang="scss">
@@ -35,6 +44,6 @@ sup{
 }
 
 button{
-	margin-top: 2rem;
+	margin-top: 4rem;
 }
 </style>

@@ -29,7 +29,7 @@
 
 	.modal{
 		background: var(--gold-light);
-		box-shadow: 1px 2px 4px hsla(420, 69%, 0%, .20);
+		box-shadow: var(--subtle-shadow);
 		border-radius: 10px;
 		width: clamp(315px, 90%, 450px);
 		padding: 1rem;
