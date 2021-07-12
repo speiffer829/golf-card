@@ -1,9 +1,109 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Ultra&display=swap');
+
 :root{
-	--dark: #022B3A;
-	--ice: #D6EFFF;
-	--light: #FEFEFF;
-	--teal: #1F7A8C;
-	--red: #FE654F;
-	--purple: #657ED4;
-	--green: #32DE8A;
+	--dark: hsl(195.9, 93.2%, 11.8%);
+	--dark-h: 195.9;
+	--dark-s: 93.2%;
+	--dark-l: 11.8%;
+
+	--paper: hsl(230, 67.3%, 95.1%);
+	--paper-h: 230;
+	--paper-s: 67.3%;
+	--paper-l: 95.1%;
+
+	--ice: hsl(203.5, 100%, 92%);
+	--ice-h: 203.5;
+	--ice-s: 100%;
+	--ice-l: 92%;
+
+	--light: hsl(240, 100%, 99.8%);
+	--light-h: 240;
+	--light-s: 100%;
+	--light-l: 99.8%;
+
+	--sea: hsl(182.5, 85.2%, 21%);
+	--sea-h: 182.5;
+	--sea-s: 85.2%;
+	--sea-l: 21%;
+	--sea-light: hsl(var(--sea-h), var(--sea-s), calc(var(--sea-l) + 5%));
+
+	--teal: hsl(176.5, 47.4%, 51.6%);
+	--red: hsl(0, 100%, 67.5%);
+	--brown: hsl(18.8, 49.6%, 53.4%);
+
+	--gold: hsl(43.9, 94%, 66.6%);
+	--gold-light: hsl(43.9, 94%, 71.6%);
+
+	--pale-yellow: hsl(55.9, 100%, 88.3%);
+	--pale-yellow-trans: hsla(55.9, 100%, 88.3%, .5);
+
+	--green: hsl(154.2, 20.3%, 50.8%);
+
+
+
+
+
+	--font: 'Arvo', serif;
+
+	--font-title:'Ultra', serif;
+
+	--shroom-text-shadow: 2px 2px 0 var(--brown), 4px 4px 0 var(--red), 6px 6px var(--green);
+
+	--subtle-shadow: 1px 2px 4px hsla(420, 69%, 0%, .20);
+}
+
+*{
+	margin: 0;
+	-webkit-appearance: none;
+	box-sizing: border-box;
+	font-family: var(--font);
+	transition: all 300ms;
+}
+
+body{
+	background: var(--pale-yellow);
+	width: 100%;
+	min-height: 100vh;
+	font-family: var(--font);
+	color: var(--brown);
+	font-weight: 400;
+}
+
+.head-text{
+		font-weight: 900;
+		color: var(--gold);
+		text-shadow: var(--shroom-text-shadow);
+		/* background: linear-gradient(to top, var(--sea), var(--sea-light)); */
+		font-family: var(--font-title);
+		text-align: center;
+		width: calc(100% - 55px);
+		margin: 10px auto 50px;
+		padding: 10px;
+		border-radius: 5px;
+		box-sizing: border-box;
+		box-shadow: 0px 0px 0px 5px var(--gold), 0px 0px 0px 10px var(--green), 0px 0px 0px 15px var(--red);
+		font-size: clamp(2rem, 9vw, 3.5rem);
+		overflow: hidden;
+		
+	}
+
+.btn{
+	font-size: 2rem;
+	text-align: center;
+	border: none;
+	background: var(--green);
+	color: var(--gold);
+	cursor: pointer;
+	font-weight: bold;
+	font-family: var(--font-title);
+	text-shadow: 3px 3px var(--red);
+	padding: 20px 40px;
+	margin: 20px auto;
+	display: block;
+	letter-spacing: .2em;
+	border-radius: 10px;
+	box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
+	transition: all 100ms;
+	text-decoration: none;
 }
