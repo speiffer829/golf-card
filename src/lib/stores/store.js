@@ -26,5 +26,6 @@ export function resetAll() {
 	currentHole.set(1);
 	currentHoleViewed.set(1);
 	scoreboard.set([])
-
+	window.localStorage.removeItem('golf-scoreboard')
+	window.localStorage.removeItem('golf-currentHole')
 }
