@@ -5,7 +5,17 @@
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
 	import HoleTitle from '$lib/components/HoleTitle.svelte'
 
-	onMount(() => {if(!$scoreboard.length) goto('/')})
+	onMount(() => {
+		const localScoreboard = window.localStorage.getItem('golf-scoreboard')
+		const localCurrentHole = window.localStorage.getItem('golf-currentHole')
+		if(!$scoreboard.length && localScoreboard.length){
+			scoreboard.set(JSON.parse(localScoreboard))
+			currentHole.set(parseInt(localCurrentHole))
+			currentHoleViewed.set(parseInt(localCurrentHole))
+		}else if(!$scoreboard.length){
+			goto('/')
+		}
+	})
 
 </script>
 

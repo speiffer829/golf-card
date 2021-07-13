@@ -18,11 +18,13 @@ export function nextHole() {
 	const newHole = get(currentHole) + 1;
 	currentHole.set(newHole);
 	currentHoleViewed.set(newHole);
+	window.localStorage.setItem('golf-scoreboard', JSON.stringify(get(scoreboard)))
+	window.localStorage.setItem('golf-currentHole', JSON.stringify(get(currentHole)))
 }
 
 export function resetAll() {
 	currentHole.set(1);
 	currentHoleViewed.set(1);
 	scoreboard.set([])
-	
+
 }

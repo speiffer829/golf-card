@@ -1,12 +1,25 @@
 <script>
-	import { scoreboard, currentHole, resetAll } from '$lib/stores/store'
+	import { scoreboard, currentHole, currentHoleViewed, resetAll } from '$lib/stores/store'
 	import {goto} from '$app/navigation'
+	import {onMount} from 'svelte'
 	$: orderedScoreboard = $scoreboard.sort((a, b) => a.holes.reduce((c, d) => c + d) - b.holes.reduce((c, d) => c + d))
 
 	function handleReset() {
 		resetAll()
 		goto('/')
 	}
+
+	onMount(() => {
+		const localScoreboard = window.localStorage.getItem('golf-scoreboard')
+		const localCurrentHole = window.localStorage.getItem('golf-currentHole')
+		if(!$scoreboard.length && localScoreboard.length){
+			scoreboard.set(JSON.parse(localScoreboard))
+			currentHole.set(parseInt(localCurrentHole))
+			currentHoleViewed.set(parseInt(localCurrentHole))
+		}else if(!$scoreboard.length){
+			goto('/')
+		}
+	})
 </script>
 
 <h1 class="head-text">TOTALS</h1>
