@@ -1,8 +1,7 @@
 <script>
-	import { scoreboard, currentHole, currentHoleViewed, resetAll } from '$lib/stores/store'
+	import { scoreboard, currentHole, currentHoleViewed, resetAll, orderedScoreboard } from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import {onMount} from 'svelte'
-	$: orderedScoreboard = $scoreboard.sort((a, b) => a.holes.reduce((c, d) => c + d) - b.holes.reduce((c, d) => c + d))
 
 	function handleReset() {
 		resetAll()
@@ -25,7 +24,7 @@
 <h1 class="head-text">TOTALS</h1>
 
 
-{#each orderedScoreboard as player, i}
+{#each $orderedScoreboard as player, i}
 	<div class="player-score-box">
 		<div class="main-row">
 			<p class="player-name">{i + 1}. {player.name}</p>
@@ -58,6 +57,7 @@
 
 		.player-name{
 			flex: 1 1 auto;
+			text-transform: capitalize;
 		}
 
 		.player-total{

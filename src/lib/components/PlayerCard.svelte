@@ -34,6 +34,7 @@
 		font-size: 2rem;
 		color: var(--gold);
 		font-family: var(--font-title);
+		text-transform: capitalize;
 	}
 
 	input{
