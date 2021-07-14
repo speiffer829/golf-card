@@ -26,6 +26,10 @@ export function nextHole() {
 	currentHoleViewed.set(newHole);
 	window.localStorage.setItem('golf-scoreboard', JSON.stringify(get(scoreboard)))
 	window.localStorage.setItem('golf-currentHole', JSON.stringify(get(currentHole)))
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth',
+	})
 }
 
 export function resetAll() {
