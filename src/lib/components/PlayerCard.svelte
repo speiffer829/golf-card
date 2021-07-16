@@ -1,13 +1,7 @@
 <script>
-	import { currentHoleViewed, scoreboard, test } from '$lib/stores/store'
+	import { currentHoleViewed, scoreboard } from '$lib/stores/store'
 	export let player
 	export let i
-
-	let newScore;
-
-	function handleChange() {
-		console.log($scoreboard[i].holes)
-	}
 
 </script>
 
@@ -16,8 +10,7 @@
 	<input 
 		type="number" pattern="\d*"
 		bind:value={$scoreboard[i].holes[$currentHoleViewed - 1]} 
-		on:click={e => e.target.select()}
-		on:change={handleChange}>
+		on:click={e => e.target.select()}>
 </article>
 
 <style>
