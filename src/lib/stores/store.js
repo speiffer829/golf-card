@@ -6,6 +6,7 @@ export const currentHole = writable(1)
 export const currentHoleViewed = writable(1)
 
 export const showHoleSelect = writable(false)
+export const gameOver = writable(false)
 
 export const orderedScoreboard = derived(
 scoreboard, 

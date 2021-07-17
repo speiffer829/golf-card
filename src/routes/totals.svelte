@@ -1,7 +1,10 @@
 <script>
-	import { scoreboard, currentHole, currentHoleViewed, resetAll, orderedScoreboard } from '$lib/stores/store'
+	import { scoreboard, currentHole, currentHoleViewed, resetAll, orderedScoreboard, gameOver } from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import {onMount} from 'svelte'
+	import ScoreCard from '$lib/components/ScoreCard.svelte'
+
+	let showGrid = false
 
 	function handleReset() {
 		resetAll()
@@ -23,17 +26,15 @@
 
 <h1 class="head-text">TOTALS</h1>
 
+<p class="small-text">Tap names to view more detail.</p>
+
+<button class="simple-btn" on:click={() => showGrid = !showGrid}>{!showGrid ? 'Show More' : 'Hide'} Detail</button>
 
 {#each $orderedScoreboard as player, i}
-	<div class="player-score-box">
-		<div class="main-row">
-			<p class="player-name">{i + 1}. {player.name}</p>
-			<p class="player-total">{ player.holes.reduce((a, b) => a+b) }</p>
-		</div>
-	</div>
+	<ScoreCard {player} {i} {showGrid} />
 {/each}
 
-{#if $currentHole < 19}
+{#if $gameOver === false}
 <a href="/game" class="btn">Resume</a>
 {/if}
 
@@ -41,30 +42,7 @@
 
 
 <style lang="scss">
-	.player-score-box{
-		width: 100%;
-		border-bottom: solid 3px var(--brown);
-	}
 
-	.main-row{
-		display: flex;
-		padding: 2rem 0rem;
-		text-shadow: 2px 2px var(--red), 4px 4px var(--green);
-		font-size: 2rem;
-		color: var(--gold);
-		font-family: var(--font-title);
-		font-weight: bold;
-
-		.player-name{
-			flex: 1 1 auto;
-			text-transform: capitalize;
-		}
-
-		.player-total{
-			flex: 0 0 auto;
-			padding-left: 1rem;
-		}
-	}
 
 	.reset-btn{
 		display: block;
