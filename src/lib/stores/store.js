@@ -13,19 +13,14 @@ scoreboard,
 	[...$scoreboard].sort((a, b) => a.holes.reduce((c, d) => c + d) - b.holes.reduce((c, d) => c + d))
 );
 
-export const test = (msg) => {
-	const newHole = get(currentHole) + 1;
-	currentHole.set(newHole)
-	currentHoleViewed.set(newHole)
-	console.log(get(currentHole) + ' ' + get(currentHoleViewed));
-}
-
 export function nextHole() {
-	const newHole = get(currentHole) + 1;
-	currentHole.set(newHole);
-	currentHoleViewed.set(newHole);
-	window.localStorage.setItem('golf-scoreboard', JSON.stringify(get(scoreboard)))
-	window.localStorage.setItem('golf-currentHole', JSON.stringify(get(currentHole)))
+	if(get(currentHole) < 18){
+		const newHole = get(currentHole) + 1;
+		currentHole.set(newHole);
+		currentHoleViewed.set(newHole);
+		window.localStorage.setItem('golf-scoreboard', JSON.stringify(get(scoreboard)))
+		window.localStorage.setItem('golf-currentHole', JSON.stringify(get(currentHole)))
+	}
 }
 
 export function resetAll() {

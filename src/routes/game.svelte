@@ -16,7 +16,6 @@
 			goto('/')
 		}
 	})
-
 </script>
 
 <svelte:head>

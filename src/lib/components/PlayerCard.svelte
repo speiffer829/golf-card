@@ -3,6 +3,7 @@
 	export let player
 	export let i
 
+	export let addScoreInput
 </script>
 
 <article class="player-box">
@@ -10,7 +11,8 @@
 	<input 
 		type="number" pattern="\d*"
 		bind:value={$scoreboard[i].holes[$currentHoleViewed - 1]} 
-		on:click={e => e.target.select()}>
+		on:click={e => e.target.select()}
+		bind:this={addScoreInput}>
 </article>
 
 <style>
