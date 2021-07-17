@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte'
-	import { scoreboard, currentHoleViewed, currentHole, nextHole} from '$lib/stores/store'
+	import { scoreboard, currentHoleViewed, currentHole, nextHole, gameOver} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
 	import HoleTitle from '$lib/components/HoleTitle.svelte'
@@ -16,7 +16,6 @@
 			goto('/')
 		}
 	})
-
 </script>
 
 <svelte:head>
@@ -38,7 +37,7 @@
 {:else if $currentHole <= 18 && $currentHole !== $currentHoleViewed}
 <button class="btn" on:click={() => currentHoleViewed.set($currentHole)}>Resume</button>
 {:else}
-<a href="/totals" on:click={nextHole} class="btn">Totals</a>
+<a href="/totals" on:click={gameOver.set(true)} class="btn">Totals</a>
 {/if}
 
 

@@ -1,18 +1,18 @@
 <script>
-
-	//TODO: Use Local Storage
-	//TODO: Actually Give Added Up Results Modal and Page
 	//TODO: Favicon
 	
 	import { flip } from 'svelte/animate';
 	import {fly} from 'svelte/transition'
 	import {scoreboard} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
+	import Modal from '$lib/components/Modal.svelte'
 	
 	let names = []
 	let currentName = ''
 	let count = 0
 	let addPlayerInput;
+	let choppingBlock = {i: '', name: ''}
+	let choppingBlockActive = false
 
 
 	function handleSubmit(){
@@ -23,8 +23,14 @@
 		addPlayerInput.focus()
 	}
 
-	function removeMe(i) {
-		names = [...names.slice(0, i), ...names.slice(i + 1)]
+	function handleRemoveBtn(i, name) {
+		choppingBlock = {i: i, name: name}
+		choppingBlockActive = true
+	}
+
+	function removeMe() {
+		names = [...names.slice(0, choppingBlock.i), ...names.slice(choppingBlock.i + 1)]
+		choppingBlockActive = false
 	}
 
 	function initiateGame() {
@@ -52,15 +58,19 @@
 
 { #each names as name, i (name.id) }
 	<h2
-		transition:fly|local={{ y:100, duration: 1000}} animate:flip>
+		in:fly|local={{ y:100, duration: 1000}} 
+		animate:flip|local={{duration: 300}}
+		on:click={() => handleRemoveBtn(i, name.name)}>
 		<span class="number">{i + 1}.</span> <span class="name">{name.name}</span>
 	</h2>
 {/each}
 
 
 
+
 {#if names.length !== 0}
-<!-- <p transition:fly|local={{ y:100, duration: 1000 }}>Once all players are added you can hit start and I guess start the game or whatever. I don't care what you do though I'm not your dad.</p> -->
+
+<p class="small-text" transition:fly|local={{ y:100, duration: 1000, delay: 100 }}>Touch a name to remove it.</p>
 
 <button 
 	transition:fly|local={{ y:100, duration: 1000, delay: 100 }} 
@@ -70,6 +80,19 @@
 </button>
 
 {/if}
+
+
+{#if choppingBlockActive}
+	<Modal on:closeMe={() => choppingBlockActive = false}>
+		<p class="are-you-sure">Are you sure you want to remove <span class="green">{ choppingBlock.name }</span>?</p>
+		<div class="chopping-block-options">
+			<button class="yes-btn" on:click={removeMe}>Remove</button>
+			<button class="no-btn" on:click={() => choppingBlockActive = false}>Cancel</button>
+		</div>
+	</Modal>
+{/if}
+
+
 <style lang="scss">
 	
 	button{
@@ -97,6 +120,16 @@
 		&:active{
 			transform: scale(.9);
 			box-shadow: 2px 2px var(--gold), 4px 4px var(--red);
+		}
+
+		&.remove-name{
+			font-size: 1rem;
+			padding: 5px;
+			text-shadow: 1px 1px var(--red);
+			box-shadow: 2px 2px var(--gold), 4px 4px var(--red);
+			margin: 0;
+			align-self: center;
+			margin-left: 5px;
 		}
 
 		&:disabled{
@@ -160,6 +193,32 @@
 
 		&:first-of-type{
 			margin-top: 3rem;
+		}
+	}
+
+	.are-you-sure{
+		font-size: 1.5rem;
+
+		.green{
+			color: var(--green);
+		}
+	}
+	.chopping-block-options{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: .5rem;
+
+		button{
+			font-family: var(--font);
+			font-size: 1rem;
+			box-shadow: var(--subtle-shadow);
+			text-shadow: none;
+			background: var(--red);
+			margin: 0;
+
+			&.no-btn{
+				background: var(--green);
+			}
 		}
 	}
 

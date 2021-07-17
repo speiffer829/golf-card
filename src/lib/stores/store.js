@@ -6,19 +6,13 @@ export const currentHole = writable(1)
 export const currentHoleViewed = writable(1)
 
 export const showHoleSelect = writable(false)
+export const gameOver = writable(false)
 
 export const orderedScoreboard = derived(
 scoreboard, 
 ($scoreboard) =>
 	[...$scoreboard].sort((a, b) => a.holes.reduce((c, d) => c + d) - b.holes.reduce((c, d) => c + d))
 );
-
-export const test = (msg) => {
-	const newHole = get(currentHole) + 1;
-	currentHole.set(newHole)
-	currentHoleViewed.set(newHole)
-	console.log(get(currentHole) + ' ' + get(currentHoleViewed));
-}
 
 export function nextHole() {
 	const newHole = get(currentHole) + 1;
