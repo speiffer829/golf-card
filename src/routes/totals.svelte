@@ -31,7 +31,7 @@
 <button class="simple-btn" on:click={() => showGrid = !showGrid}>{!showGrid ? 'Show More' : 'Hide'} Detail</button>
 
 {#each $orderedScoreboard as player, i}
-	<ScoreCard {player} {i} {showGrid} />
+	<ScoreCard {player} {i} bind:showGrid />
 {/each}
 
 {#if $gameOver === false}

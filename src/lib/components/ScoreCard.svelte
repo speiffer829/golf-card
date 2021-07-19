@@ -7,7 +7,7 @@
 	export let showGrid = false;
 </script>
 
-<div class="player-score-box" on:click="{() => showGrid = !showGrid}">
+<div class="player-score-box">
 	<div class="main-row">
 			<p class="player-name">{i + 1}. {player.name}</p>
 			<p class="player-total">{ player.holes.reduce((a, b) => a+b) }</p>
