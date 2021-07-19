@@ -82,15 +82,13 @@
 {/if}
 
 
-{#if choppingBlockActive}
-	<Modal on:closeMe={() => choppingBlockActive = false}>
+	<Modal bind:modalOpen={choppingBlockActive}>
 		<p class="are-you-sure">Are you sure you want to remove <span class="green">{ choppingBlock.name }</span>?</p>
 		<div class="chopping-block-options">
 			<button class="yes-btn" on:click={removeMe}>Remove</button>
 			<button class="no-btn" on:click={() => choppingBlockActive = false}>Cancel</button>
 		</div>
 	</Modal>
-{/if}
 
 
 <style lang="scss">

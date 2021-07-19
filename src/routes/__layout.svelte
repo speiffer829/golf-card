@@ -7,11 +7,9 @@
 <main class="wrap">
 	<slot />
 
-{#if $showHoleSelect}
-<Modal on:closeMe={() => showHoleSelect.set(false) }>
-	<GoToHole on:closeMe={() => showHoleSelect.set(false) } />
+<Modal bind:modalOpen={$showHoleSelect} >
+	<GoToHole />
 </Modal>
-{/if}
 </main>
 
 <style>

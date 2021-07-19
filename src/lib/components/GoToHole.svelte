@@ -1,12 +1,10 @@
 <script>
-	import { currentHoleViewed, currentHole } from '$lib/stores/store'
-	import {createEventDispatcher} from 'svelte'
+	import { currentHoleViewed, currentHole, showHoleSelect } from '$lib/stores/store'
 
-	const dispatch = createEventDispatcher()
 
 	function handleClick(i) {
 		currentHoleViewed.set(i + 1)
-		dispatch('closeMe')
+		showHoleSelect.set(false)
 	}
 </script>
 
@@ -21,7 +19,7 @@
 	{/each}
 </div>
 
-<a href="/totals" on:click={() => dispatch('closeMe')}>See Current Totals</a>
+<a href="/totals" on:click={() => showHoleSelect.set(false)}>See Current Totals</a>
 
 
 <style lang="scss">

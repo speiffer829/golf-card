@@ -3,18 +3,23 @@
 	import {fade, fly} from 'svelte/transition'
 
 	const dispatch = createEventDispatcher()
+
+	export let modalOpen = false
 </script>
 
+{#if modalOpen}
 <div 
 	class="overlay" 
 	transition:fade|local={{ duration: 400 }} 
-	on:click|self={() => dispatch('closeMe')}>
+	on:click|self={() => modalOpen = false}>
 	<div class="modal" transition:fly|local={{ y:100, duration: 400 }}>
 		<div class="wrap">
 			<slot/>
 		</div>
 	</div>
 </div>
+	
+{/if}
 
 <style>
 	.overlay{

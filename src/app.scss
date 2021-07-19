@@ -89,23 +89,37 @@ body{
 	}
 
 .btn{
-	font-size: 2rem;
+	font-size: 1rem;
 	text-align: center;
 	border: none;
-	background: var(--green);
-	color: var(--gold);
+	background: var(--btnBG, var(--green));
+	color: var(--btnColor, var(--gold));
 	cursor: pointer;
 	font-weight: bold;
-	font-family: var(--font-title);
-	text-shadow: 3px 3px var(--red);
-	padding: 20px 40px;
-	margin: 20px auto;
+	font-family: var(--font);
+	text-shadow: 1px 1px var(--btnTextShadow, transparent);
+	padding: 20px 20px;
 	display: block;
 	letter-spacing: .2em;
 	border-radius: 10px;
-	box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
-	transition: all 100ms;
+	// box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
+	box-shadow: var(--subtle-shadow);
 	text-decoration: none;
+	transition: all 100ms;
+
+	@media screen and (min-width: 390px) {
+		padding: 20px 40px;
+	}
+
+	&.big-btn{
+		font-size: 1.7rem;
+		text-shadow: 3px 3px var(--btnTextShadow, var(--red));
+	}
+
+	&:active{
+		transform: scale(.9);
+		box-shadow: 2px 2px var(--gold), 4px 4px var(--red);
+	}
 }
 
 .simple-btn{
