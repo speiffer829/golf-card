@@ -26,8 +26,6 @@
 
 <h1 class="head-text">TOTALS</h1>
 
-<p class="small-text">Tap names to view more detail.</p>
-
 <button class="simple-btn" on:click={() => showGrid = !showGrid}>{!showGrid ? 'Show More' : 'Hide'} Detail</button>
 
 {#each $orderedScoreboard as player, i}
