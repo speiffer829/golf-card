@@ -33,26 +33,18 @@
 {/each}
 
 {#if $gameOver === false}
-<a href="/game" class="btn">Resume</a>
+<a href="/game" class="btn big-btn">Resume</a>
+{:else}
+<button class="btn big-btn" style="--btnBG: var(--red); --btnColor: var(--pale-yellow);" on:click={handleReset}>
+	New Game
+</button>
 {/if}
 
-<button class="reset-btn" on:click={handleReset}>Reset All</button>
 
 
 <style lang="scss">
 
-
-	.reset-btn{
-		display: block;
-		background: var(--red);
-		color: var(--pale-yellow);
-		border: none;
-		padding: 1rem 2rem;
-		border-radius: 10px;
-		box-shadow: var(--subtle-shadow);
-		margin: 1rem auto 0;
-		text-decoration: none;
-		text-align: center;
-		margin-top: 4rem;
-	}
+.big-btn{
+	margin-top: 3rem;
+}
 </style>

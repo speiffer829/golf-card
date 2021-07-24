@@ -52,7 +52,7 @@
 
 <form on:submit|preventDefault={handleSubmit} >
 	<input type="text" bind:value={currentName} bind:this={addPlayerInput} placeholder="Add Player">
-	<button class="add-btn" disabled={currentName.length == 0}>Add Player</button>
+	<button class="add-btn btn" disabled={currentName.length == 0}>Add Player</button>
 </form>
 
 
@@ -75,7 +75,8 @@
 <button 
 	transition:fly|local={{ y:100, duration: 1000, delay: 100 }} 
 	disabled={names.length === 0}
-	on:click={initiateGame}>
+	on:click={initiateGame}
+	class="fancy-btn">
 		Start
 </button>
 
@@ -85,56 +86,13 @@
 	<Modal bind:modalOpen={choppingBlockActive}>
 		<p class="are-you-sure">Are you sure you want to remove <span class="green">{ choppingBlock.name }</span>?</p>
 		<div class="chopping-block-options">
-			<button class="yes-btn" on:click={removeMe}>Remove</button>
-			<button class="no-btn" on:click={() => choppingBlockActive = false}>Cancel</button>
+			<button class="yes-btn simple-btn" on:click={removeMe}>Remove</button>
+			<button class="no-btn simple-btn" on:click={() => choppingBlockActive = false}>Cancel</button>
 		</div>
 	</Modal>
 
 
 <style lang="scss">
-	
-	button{
-		font-size: 2rem;
-		text-align: center;
-		border: none;
-		background: var(--green);
-		color: var(--gold);
-		cursor: pointer;
-		font-weight: bold;
-		font-family: var(--font-title);
-		text-shadow: 3px 3px var(--red);
-		padding: 20px 40px;
-		margin: 20px auto;
-		display: block;
-		letter-spacing: .2em;
-		border-radius: 10px;
-		box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
-		transition: all 100ms;
-
-		&.add-btn{
-			font-size: 1.5rem;
-		}
-
-		&:active{
-			transform: scale(.9);
-			box-shadow: 2px 2px var(--gold), 4px 4px var(--red);
-		}
-
-		&.remove-name{
-			font-size: 1rem;
-			padding: 5px;
-			text-shadow: 1px 1px var(--red);
-			box-shadow: 2px 2px var(--gold), 4px 4px var(--red);
-			margin: 0;
-			align-self: center;
-			margin-left: 5px;
-		}
-
-		&:disabled{
-			opacity: .5;
-			pointer-events: none;
-		}
-	}
 
 	p{
 		margin: 3rem auto;
@@ -142,6 +100,11 @@
 		line-height: 2rem;
 		text-align: center;
 	}
+
+	form button{
+		margin: 1rem auto 0;
+	}
+
 
 	input{
 		font-size: 1.5rem;

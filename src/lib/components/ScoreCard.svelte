@@ -16,7 +16,7 @@
 	{#if showGrid}
 		<div class="grid" transition:slide={{duration: 300}}>
 			{#each player.holes as hole, i}
-				<div class="hole" class:faded={hole === 0}>
+				<div class="hole" class:faded={hole === 0} class:green={hole < 3 && hole !== 0} class:red={hole > 4}>
 					<p class="hole-number" class:green={hole < 3 && hole !== 0} class:red={hole > 4}><sup>#</sup>{ i + 1 }</p>
 					<p class="hole-score" class:green={hole < 3 && hole !== 0} class:red={hole > 4}>{ hole }</p>
 				</div>
@@ -60,31 +60,31 @@
 	}
 
 	.hole{
+		--holeColor: var(--brown);
 		text-align: center;
-		border: solid 1px var(--brown);
+		border: solid 1px var(--holeColor, var(--brown));
 		overflow: hidden;
 		border-radius: 3px;
 
 		&.faded{
 			opacity: 0.3;
 		}
-	}
 
-	.hole-number{
-		background: var(--gold);
-		width: 100%;
-		margin: 0px auto 0;
-		font-size: 0.7rem;
-
-		&.red{
-			background: var(--red);
-			color: var(--pale-yellow);
+			&.red{
+			--holeColor: var(--red)
 		}
 
 		&.green{
-			background: var(--green);
-			color: var(--pale-yellow);
+			--holeColor: var(--green);
 		}
+	}
+
+	.hole-number{
+		background: var(--holeColor, var(--brown));
+		width: 100%;
+		margin: 0px auto 0;
+		font-size: 0.7rem;
+		color: var(--pale-yellow);
 	}
 
 	sup{
@@ -94,14 +94,7 @@
 	.hole-score{
 		font-weight: bold;
 		margin-top: 3px;
-
-		&.red{
-			color: var(--red);
-		}
-
-		&.green{
-			color: var(--green);
-		}
+		color: var(--holeColor, var(--brown));
 	}
 
 </style>

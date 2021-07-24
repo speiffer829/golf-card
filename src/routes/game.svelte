@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from 'svelte'
-	import { scoreboard, currentHoleViewed, currentHole, nextHole, gameOver} from '$lib/stores/store'
+	import { scoreboard, currentHoleViewed, currentHole, nextHole, gameOver, showHoleSelect} from '$lib/stores/store'
 	import {goto} from '$app/navigation'
 	import PlayerCard from '$lib/components/PlayerCard.svelte'
 	import HoleTitle from '$lib/components/HoleTitle.svelte'
@@ -12,7 +12,7 @@
 	onMount(() => {
 		const localScoreboard = window.localStorage.getItem('golf-scoreboard')
 		const localCurrentHole = window.localStorage.getItem('golf-currentHole')
-		if(!$scoreboard.length && localScoreboard.length){
+		if(!$scoreboard.length && localScoreboard !== null && localScoreboard.length){
 			scoreboard.set(JSON.parse(localScoreboard))
 			currentHole.set(parseInt(localCurrentHole))
 			currentHoleViewed.set(parseInt(localCurrentHole))
@@ -55,7 +55,7 @@
 </div>
 
 <Modal bind:modalOpen={showOptions}>
-	<GameOptions />
+	<GameOptions bind:showOptions />
 </Modal>
 
 

@@ -114,6 +114,7 @@ body{
 	&.big-btn{
 		font-size: 1.7rem;
 		text-shadow: 3px 3px var(--btnTextShadow, var(--red));
+		width: 100%;
 	}
 
 	&:active{
@@ -122,10 +123,29 @@ body{
 	}
 }
 
+
+.fancy-btn{
+	font-size: 2rem;
+	text-align: center;
+	border: none;
+	background: var(--green);
+	color: var(--gold);
+	cursor: pointer;
+	font-weight: bold;
+	font-family: var(--font-title);
+	text-shadow: 3px 3px var(--red);
+	padding: 20px 40px;
+	margin: 20px auto;
+	display: block;
+	letter-spacing: .2em;
+	border-radius: 10px;
+	box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
+	transition: all 100ms;
+}
 .simple-btn{
 	display: block;
-	background: var(--brown);
-	color: var(--pale-yellow);
+	background: var(--btnBG, var(--brown));
+	color: var(--btnColor, var(--pale-yellow));
 	padding: 1rem 2rem;
 	border-radius: 10px;
 	box-shadow: var(--subtle-shadow);
@@ -134,10 +154,21 @@ body{
 	text-align: center;
 	border: none;
 	cursor: pointer;
+
+	&.big{
+		width: 100%;
+		font-size: 1.7rem;
+		text-shadow: 3px 3px var(--btnTextShadow, var(--red));
+	}
 }
 
 .small-text{
 	font-size: 0.7rem;
 	text-align: center;
 	margin: 5px auto;
+}
+
+button:disabled{
+	opacity: .5;
+	pointer-events: none;
 }
