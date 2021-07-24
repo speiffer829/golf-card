@@ -32,4 +32,5 @@ export function resetAll() {
 	scoreboard.set([])
 	window.localStorage.removeItem('golf-scoreboard')
 	window.localStorage.removeItem('golf-currentHole')
+	gameOver.set(false)
 }
