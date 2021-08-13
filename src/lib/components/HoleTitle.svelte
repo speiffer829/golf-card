@@ -1,11 +1,16 @@
 <script>
 	import {currentHoleViewed, showHoleSelect} from '$lib/stores/store'
+	import { fly } from 'svelte/transition'
+	import { backOut } from 'svelte/easing'
 </script>
 
-<h1 class="head-text" 
+{#key $currentHoleViewed}
+<h1 class="head-text"
+	in:fly={{ y: -50, duration: 500, easing: backOut }} 
 	on:click={ () => showHoleSelect.set(true) }>
 	Hole <sup>#</sup>{$currentHoleViewed}
 </h1>
+{/key}
 
 <style>
 sup{

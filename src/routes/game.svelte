@@ -6,6 +6,8 @@
 	import HoleTitle from '$lib/components/HoleTitle.svelte'
 	import GameOptions from '$lib/components/GameOptions.svelte'
 	import Modal from '$lib/components/Modal.svelte'
+	import { fly } from 'svelte/transition'
+	import { backOut } from 'svelte/easing'
 
 	let showOptions;
 
@@ -29,11 +31,15 @@
 
 <HoleTitle />
 
-{ #each $scoreboard as player, i }
-
-	<PlayerCard {player} {i} />
-
-{ /each }
+{#key $currentHoleViewed}
+<div in:fly={{ x: 100, duration: 500, easing: backOut }}>
+	{ #each $scoreboard as player, i (player.id) }
+	
+		<PlayerCard {player} {i} />
+	
+	{ /each }
+</div>
+{/key}
 
 
 <div class="btn-grid">
