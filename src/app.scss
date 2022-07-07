@@ -1,7 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Ultra&display=swap');
 
-:root{
+:root {
 	--dark: hsl(195.9, 93.2%, 11.8%);
 	--dark-h: 195.9;
 	--dark-s: 93.2%;
@@ -36,24 +35,20 @@
 	--gold-light: hsl(43.9, 94%, 71.6%);
 
 	--pale-yellow: hsl(55.9, 100%, 88.3%);
-	--pale-yellow-trans: hsla(55.9, 100%, 88.3%, .5);
+	--pale-yellow-trans: hsla(55.9, 100%, 88.3%, 0.5);
 
 	--green: hsl(154.2, 20.3%, 50.8%);
 
-
-
-
-
 	--font: 'Arvo', serif;
 
-	--font-title:'Ultra', serif;
+	--font-title: 'Ultra', serif;
 
 	--shroom-text-shadow: 2px 2px 0 var(--brown), 4px 4px 0 var(--red), 6px 6px var(--green);
 
-	--subtle-shadow: 1px 2px 4px hsla(420, 69%, 0%, .20);
+	--subtle-shadow: 1px 2px 4px hsla(420, 69%, 0%, 0.2);
 }
 
-*{
+* {
 	margin: 0;
 	-webkit-appearance: none;
 	box-sizing: border-box;
@@ -61,7 +56,7 @@
 	transition: all 300ms;
 }
 
-body{
+body {
 	background: var(--pale-yellow);
 	width: 100%;
 	min-height: 100vh;
@@ -70,25 +65,25 @@ body{
 	font-weight: 400;
 }
 
-.head-text{
-		font-weight: 900;
-		color: var(--gold);
-		text-shadow: var(--shroom-text-shadow);
-		/* background: linear-gradient(to top, var(--sea), var(--sea-light)); */
-		font-family: var(--font-title);
-		text-align: center;
-		width: calc(100% - 55px);
-		margin: 10px auto 50px;
-		padding: 10px;
-		border-radius: 5px;
-		box-sizing: border-box;
-		box-shadow: 0px 0px 0px 5px var(--gold), 0px 0px 0px 10px var(--green), 0px 0px 0px 15px var(--red);
-		font-size: clamp(2rem, 9vw, 3.5rem);
-		overflow: hidden;
-		
-	}
+.head-text {
+	font-weight: 900;
+	color: var(--gold);
+	text-shadow: var(--shroom-text-shadow);
+	/* background: linear-gradient(to top, var(--sea), var(--sea-light)); */
+	font-family: var(--font-title);
+	text-align: center;
+	width: calc(100% - 55px);
+	margin: 10px auto 50px;
+	padding: 10px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 0px 5px var(--gold), 0px 0px 0px 10px var(--green),
+		0px 0px 0px 15px var(--red);
+	font-size: clamp(2rem, 9vw, 3.5rem);
+	overflow: hidden;
+}
 
-.btn{
+.btn {
 	font-size: 1rem;
 	text-align: center;
 	border: none;
@@ -100,7 +95,7 @@ body{
 	text-shadow: 1px 1px var(--btnTextShadow, transparent);
 	padding: 20px 20px;
 	display: block;
-	letter-spacing: .2em;
+	letter-spacing: 0.2em;
 	border-radius: 10px;
 	// box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
 	box-shadow: var(--subtle-shadow);
@@ -111,20 +106,19 @@ body{
 		padding: 20px 40px;
 	}
 
-	&.big-btn{
+	&.big-btn {
 		font-size: 1.7rem;
 		text-shadow: 3px 3px var(--btnTextShadow, var(--red));
 		width: 100%;
 	}
 
-	&:active{
-		transform: scale(.9);
+	&:active {
+		transform: scale(0.9);
 		box-shadow: 2px 2px var(--gold), 4px 4px var(--red);
 	}
 }
 
-
-.fancy-btn{
+.fancy-btn {
 	font-size: 2rem;
 	text-align: center;
 	border: none;
@@ -137,12 +131,12 @@ body{
 	padding: 20px 40px;
 	margin: 20px auto;
 	display: block;
-	letter-spacing: .2em;
+	letter-spacing: 0.2em;
 	border-radius: 10px;
 	box-shadow: 5px 5px var(--gold), 10px 10px var(--red);
 	transition: all 100ms;
 }
-.simple-btn{
+.simple-btn {
 	display: block;
 	background: var(--btnBG, var(--brown));
 	color: var(--btnColor, var(--pale-yellow));
@@ -155,20 +149,20 @@ body{
 	border: none;
 	cursor: pointer;
 
-	&.big{
+	&.big {
 		width: 100%;
 		font-size: 1.7rem;
 		text-shadow: 3px 3px var(--btnTextShadow, var(--red));
 	}
 }
 
-.small-text{
+.small-text {
 	font-size: 0.7rem;
 	text-align: center;
 	margin: 5px auto;
 }
 
-button:disabled{
-	opacity: .5;
+button:disabled {
+	opacity: 0.5;
 	pointer-events: none;
 }
